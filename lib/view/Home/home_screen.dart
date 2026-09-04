@@ -44,7 +44,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
-                          image: NetworkImage("https://1000logos.net/wp-content/uploads/2021/02/Bkash-logo.png")
+                          image: AssetImage("assets/images/bkash.jpg"),
                         )
                       ),
                     ),
@@ -53,10 +53,11 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Container(
                       height: 80,
                       width: 100,
+
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(
-                              image: NetworkImage("https://vectorseek.com/wp-content/uploads/2022/02/vectorseek.com-Nagad-Logo-Vector.png")
+                              image: AssetImage("assets/images/nagad.jpg"),
                           )
                       ),
                     ),
@@ -68,7 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(
-                              image: NetworkImage("https://static.vecteezy.com/system/resources/thumbnails/068/706/013/small/rocket-color-logo-mobile-banking-icon-free-png.png")
+                              image: AssetImage("assets/images/rocket.png"),
                           )
                       ),
                     ),
@@ -80,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
                           image: DecorationImage(
-                              image: NetworkImage("https://uppay.s3.us-east-2.amazonaws.com/images/logoUp.png")
+                              image: AssetImage("assets/images/uppay.png"),
                           )
                       ),
                     ),
