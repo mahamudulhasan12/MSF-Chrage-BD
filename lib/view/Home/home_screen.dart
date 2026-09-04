@@ -37,10 +37,54 @@ class _HomeScreenState extends State<HomeScreen> {
                 unselectedLabelColor: Colors.blue,
                 labelColor: Colors.black,
                 tabs: [
-                  Tab(icon: Icon(Icons.home), text: "Home"),
-                  Tab(icon: Icon(Icons.backpack_outlined), text: "saga"),
-                  Tab(icon: Icon(Icons.home), text: "asgfas"),
-                  Tab(icon: Icon(Icons.home), text: "asgag"),
+                  Tab(
+                    child: Container(
+                      height: 80,
+                      width: 100,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                          image: NetworkImage("https://1000logos.net/wp-content/uploads/2021/02/Bkash-logo.png")
+                        )
+                      ),
+                    ),
+                  ),
+                  Tab(
+                    child: Container(
+                      height: 80,
+                      width: 100,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                              image: NetworkImage("https://vectorseek.com/wp-content/uploads/2022/02/vectorseek.com-Nagad-Logo-Vector.png")
+                          )
+                      ),
+                    ),
+                  ),
+                  Tab(
+                    child: Container(
+                      height: 80,
+                      width: 100,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                              image: NetworkImage("https://static.vecteezy.com/system/resources/thumbnails/068/706/013/small/rocket-color-logo-mobile-banking-icon-free-png.png")
+                          )
+                      ),
+                    ),
+                  ),
+                  Tab(
+                    child: Container(
+                      height: 80,
+                      width: 100,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                              image: NetworkImage("https://uppay.s3.us-east-2.amazonaws.com/images/logoUp.png")
+                          )
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -92,10 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
               controller: amount,
               decoration: InputDecoration(
                 hintText: "৳ Amount",
-                hintStyle: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.bold
-                ),
+                hintStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 fillColor: Colors.grey.shade200,
                 filled: true,
                 border: OutlineInputBorder(
@@ -108,19 +149,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            SizedBox(height: 10,),
-            Center(child: AppText(text: "Cashout Rate :৳ 1.5 %",fontSize: 22,fontWeight: FontWeight.bold,)),
-            SizedBox(
-              height: 40,
-
-              child: ListView(
-
+            SizedBox(height: 10),
+            Center(
+              child: AppText(
+                text: "Cashout Rate :৳ 1.5 %",
+                fontSize: 22,
+                fontWeight: FontWeight.bold,
               ),
-            )
+            ),
+            SizedBox(height: 40, child: ListView()),
           ],
         ),
       ),
     );
   }
 }
-
