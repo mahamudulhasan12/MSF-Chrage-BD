@@ -1,8 +1,14 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:mfs_chrage/view/Home/widget/amount_section.dart';
+import 'package:mfs_chrage/view/Home/widget/drawer_section.dart';
+import 'package:mfs_chrage/view/cashout%20page/cashout_page.dart';
+import 'package:mfs_chrage/view/privacy/about_privacy_screen.dart';
 
 import '../../custom widget/app_text.dart';
+import '../../mfs data/mfs_data.dart';
+import '../about dev/about_dev_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,12 +18,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  TextEditingController amount = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
       length: 4,
       child: Scaffold(
+        drawer: DrawerSection(),
         appBar: AppBar(
           backgroundColor: Colors.green.shade100,
           title: Text(
@@ -26,142 +33,91 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           toolbarHeight: 45,
         ),
-        body: ListView(
-          padding: EdgeInsets.all(10),
-          children: [
-            Container(
-              height: 100,
-              width: MediaQuery.sizeOf(context).width,
-              child: TabBar(
-                indicatorColor: Colors.blue,
-                unselectedLabelColor: Colors.blue,
-                labelColor: Colors.black,
-                tabs: [
-                  Tab(
-                    child: Container(
-                      height: 80,
-                      width: 100,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/bkash.jpg"),
-                        )
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Container(
+                height: 100,
+                width: MediaQuery.sizeOf(context).width,
+                child: TabBar(
+                  indicatorColor: Colors.blue,
+                  unselectedLabelColor: Colors.blue,
+                  labelColor: Colors.black,
+                  tabs: [
+                    Tab(
+                      child: Container(
+                        height: 80,
+                        width: 100,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          image: DecorationImage(
+                            image: AssetImage("assets/images/bkash.jpg"),
+                          )
+                        ),
                       ),
                     ),
-                  ),
-                  Tab(
-                    child: Container(
-                      height: 80,
-                      width: 100,
+                    Tab(
+                      child: Container(
+                        height: 80,
+                        width: 100,
 
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                              image: AssetImage("assets/images/nagad.jpg"),
-                          )
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                                image: AssetImage("assets/images/nagad.jpg"),
+                            )
+                        ),
                       ),
                     ),
-                  ),
-                  Tab(
-                    child: Container(
-                      height: 80,
-                      width: 100,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                              image: AssetImage("assets/images/rocket.png"),
-                          )
+                    Tab(
+                      child: Container(
+                        height: 80,
+                        width: 100,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                                image: AssetImage("assets/images/rocket.png"),
+                            )
+                        ),
                       ),
                     ),
-                  ),
-                  Tab(
-                    child: Container(
-                      height: 80,
-                      width: 100,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          image: DecorationImage(
-                              image: AssetImage("assets/images/uppay.png"),
-                          )
+                    Tab(
+                      child: Container(
+                        height: 80,
+                        width: 100,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            image: DecorationImage(
+                                image: AssetImage("assets/images/uppay.png"),
+                            )
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 20),
-            Center(
-              child: DropdownMenu(
-                width: 250,
-                inputDecorationTheme: InputDecorationTheme(
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10),
-                    borderSide: BorderSide(width: 1, color: Colors.grey),
-                  ),
-                ),
-                onSelected: (value) {},
-                menuStyle: MenuStyle(
-                  backgroundColor: WidgetStatePropertyAll(Colors.white),
-                  elevation: WidgetStatePropertyAll(5),
-                  shape: WidgetStatePropertyAll(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                ),
-                dropdownMenuEntries: [
-                  DropdownMenuEntry(
-                    value: "Bkash Personal",
-                    label: "Bkash Personal",
-                  ),
-                  DropdownMenuEntry(value: "Bkash Agent", label: "Bkash Agent"),
-                  DropdownMenuEntry(
-                    value: "Priyo Number",
-                    label: "Proyo Number",
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(height: 10),
-            TextField(
-              keyboardType: TextInputType.number,
-              onChanged: (value) {
-                log(value);
-              },
-              controller: amount,
-              decoration: InputDecoration(
-                hintText: "৳ Amount",
-                hintStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                fillColor: Colors.grey.shade200,
-                filled: true,
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide.none,
-                ),
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
-                  borderSide: BorderSide.none,
+                  ],
                 ),
               ),
-            ),
-            SizedBox(height: 10),
-            Center(
-              child: AppText(
-                text: "Cashout Rate :৳ 1.5 %",
-                fontSize: 22,
-                fontWeight: FontWeight.bold,
+              SizedBox(height: 20,),
+              Expanded(
+                child: TabBarView(
+                  children: [
+                    CashOutPage(mfsName: "bKash"),
+                    CashOutPage(mfsName: "Nagad"),
+                    CashOutPage(mfsName: "Rocket"),
+                    CashOutPage(mfsName: "upay"),
+                  ],
+                ),
               ),
-            ),
-            SizedBox(height: 40, child: ListView()),
-          ],
+              SizedBox(height: 20),
+            ],
+          ),
         ),
+
       ),
     );
   }
 }
+
+
+
+
