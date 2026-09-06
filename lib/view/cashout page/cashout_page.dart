@@ -32,9 +32,8 @@ class _CashOutPageState extends State<CashOutPage> {
     }
 
     amount = double.tryParse(
-      amountController.text.trim(),
+      amountController.text.replaceAll(',', '').trim(),
     ) ?? 0;
-
 
     if (selectedMethod != null) {
       rate = mfsData[widget.mfsName]?["cashOut"]![selectedMethod]! ?? 0;
@@ -46,6 +45,14 @@ class _CashOutPageState extends State<CashOutPage> {
 
     setState(() {});
   }
+  // void selectAmount(String value) {
+  //   // selectedMethod = value;
+  //   amountController.text = value;
+  //
+  //   calculateCharge();
+  //
+  //   setState(() {});
+  // }
   @override
   void dispose() {
     amountController.dispose();
@@ -74,10 +81,10 @@ class _CashOutPageState extends State<CashOutPage> {
                 ),
               ),
               onSelected: (value) {
-                setState(() {
-                  selectedMethod = value;
-                });
-                calculateCharge();
+               calculateCharge();
+               setState(() {
+                 selectedMethod =value;
+               });
               },
               menuStyle: MenuStyle(
 
@@ -110,10 +117,21 @@ class _CashOutPageState extends State<CashOutPage> {
           TextField(
             keyboardType: TextInputType.number,
             onChanged: (value) {
-              calculateCharge();
+              // setState(() {
+              //   selectedMethod =value;
+              // });
+              setState(() {
+                calculateCharge();
+              });
+
             },
             controller: amountController,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
             decoration: InputDecoration(
+
               hintText: "৳ Amount",
               hintStyle: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               fillColor: Colors.grey.shade200,
@@ -140,17 +158,55 @@ class _CashOutPageState extends State<CashOutPage> {
           SizedBox(height: 35, child: ListView(
             scrollDirection: Axis.horizontal,
             children: [
-              AmountSection(onTab: () {
-                amountController.text = "1,000";
-              }, taka: '1,000',),
-              SizedBox(width: 5,),
-              AmountSection(onTab: () { amountController.text = "2,000"; }, taka: '2,000',),
-              SizedBox(width: 5,),
-              AmountSection(onTab: () {  amountController.text = "5,000";}, taka: '5,000',),
-              SizedBox(width: 5,),
-              AmountSection(onTab: () { amountController.text = "1,0000"; }, taka: '1,0000',),
-              SizedBox(width: 5,),
-              AmountSection(onTab: () {amountController.text = "15,000";  }, taka: '150,00',),
+              AmountSection(
+                onTab: () {
+                  setState(() {
+
+                  });
+                  amountController.text = '1000';
+                },
+                taka: '1,000',
+              ),
+
+              SizedBox(width: 5),
+
+              AmountSection(
+                onTab: () {
+                  amountController.text = '2000';
+                  setState(() {});
+                },
+                taka: '2,000',
+              ),
+
+              SizedBox(width: 5),
+
+              AmountSection(
+                onTab: () {
+                  amountController.text = '5000';
+                  setState(() {});
+                },
+                taka: '5,000',
+              ),
+
+              SizedBox(width: 5),
+
+              AmountSection(
+                onTab: () {
+                  amountController.text = '10000';
+                  setState(() {});
+                },
+                taka: '10,000',
+              ),
+
+              SizedBox(width: 5),
+
+              AmountSection(
+                onTab: () {
+                  amountController.text = '15000';
+                  setState(() {});
+                },
+                taka: '15,000',
+              ),
             ],
           )),
           SizedBox(height: 20,),
